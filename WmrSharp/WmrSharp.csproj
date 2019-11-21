@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{4E37ADCF-0E25-431B-9491-8AD1CD5886A6}</ProjectGuid>
+    <ProjectGuid>{A17B5851-4AC3-4944-A473-150EE581566D}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WmrSharp</RootNamespace>
@@ -103,6 +103,8 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Content\QuadRenderer.cs" />
+    <Compile Include="Content\TextureLoader.cs" />
     <Compile Include="WmrSharpMain.cs" />
     <Compile Include="AppView.cs" />
     <Compile Include="AppViewSource.cs" />
@@ -160,6 +162,11 @@
     <PackageReference Include="SharpDX.Direct3D11">
       <Version>3.0.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CommonToolsUwp">
+      <HintPath>..\..\..\..\DebugViewF\CommonToolsUwp\bin\Release\CommonToolsUwp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

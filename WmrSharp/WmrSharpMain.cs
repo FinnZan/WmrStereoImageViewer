@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using System.Collections.Generic;
-
+using System.Numerics;
 #if DRAW_SAMPLE_CONTENT
 using WmrSharp.Content;
 #endif
@@ -37,8 +37,9 @@ namespace WmrSharp
 #if DRAW_SAMPLE_CONTENT
         // Renders a colorful holographic cube that's 20 centimeters wide. This sample content
         // is used to demonstrate world-locked rendering.
-        private SpinningCubeRenderer        spinningCubeRenderer;
-        
+        private QuadRenderer quadRendererR;
+        private QuadRenderer quadRendererL;
+
         private SpatialInputHandler         spatialInputHandler;
 #endif
 
@@ -134,7 +135,10 @@ namespace WmrSharp
 
 #if DRAW_SAMPLE_CONTENT
             // Initialize the sample hologram.
-            spinningCubeRenderer = new SpinningCubeRenderer(deviceResources);
+            var gap = 0.0f;
+            var size = 0.5f;
+            quadRendererR = new QuadRenderer(deviceResources, size, new Vector3(gap, -size/2,-2f));
+            quadRendererL = new QuadRenderer(deviceResources, size, new Vector3(-(size + gap),-size/2,-2f));
 
             spatialInputHandler = new SpatialInputHandler();
 #endif
@@ -171,10 +175,16 @@ namespace WmrSharp
         public void Dispose()
         {
 #if DRAW_SAMPLE_CONTENT
-            if (spinningCubeRenderer != null)
+            if (quadRendererR != null)
             {
-                spinningCubeRenderer.Dispose();
-                spinningCubeRenderer = null;
+                quadRendererR.Dispose();
+                quadRendererR = null;
+            }
+
+            if (quadRendererL != null)
+            {
+                quadRendererL.Dispose();
+                quadRendererL = null;
             }
 #endif
         }
@@ -259,7 +269,8 @@ namespace WmrSharp
 
                 // When a Pressed gesture is detected, the sample hologram will be repositioned
                 // two meters in front of the user.
-                spinningCubeRenderer.PositionHologram(pose);
+                quadRendererR.PositionHologram(pose);
+                quadRendererL.PositionHologram(pose);
             }
 #endif
 
@@ -274,7 +285,8 @@ namespace WmrSharp
                 //
 
 #if DRAW_SAMPLE_CONTENT
-                spinningCubeRenderer.Update(timer);
+                quadRendererR.Update(timer);
+                quadRendererL.Update(timer);
 #endif
             });
 
@@ -300,7 +312,7 @@ namespace WmrSharp
                 {
                     renderingParameters.SetFocusPoint(
                         stationaryReferenceFrame.CoordinateSystem,
-                        spinningCubeRenderer.Position
+                        new System.Numerics.Vector3(0,0,0)
                         );
                 }
 #endif
@@ -409,7 +421,8 @@ namespace WmrSharp
                     if (cameraActive)
                     {
                         // Draw the sample hologram.
-                        spinningCubeRenderer.Render();
+                        quadRendererR.Render();
+                        quadRendererL.Render();
 
                         if (canCommitDirect3D11DepthBuffer)
                         {
@@ -472,7 +485,8 @@ namespace WmrSharp
         {
 
 #if DRAW_SAMPLE_CONTENT
-            spinningCubeRenderer.ReleaseDeviceDependentResources();
+            quadRendererR.ReleaseDeviceDependentResources();
+            quadRendererL.ReleaseDeviceDependentResources();
 #endif
 
         }
@@ -483,7 +497,8 @@ namespace WmrSharp
         public void OnDeviceRestored(Object sender, EventArgs e)
         {
 #if DRAW_SAMPLE_CONTENT
-            spinningCubeRenderer.CreateDeviceDependentResourcesAsync();
+            quadRendererR.CreateDeviceDependentResourcesAsync();
+            quadRendererL.CreateDeviceDependentResourcesAsync();
 #endif
         }
 

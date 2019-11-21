@@ -5,6 +5,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Graphics.Holographic;
 using Windows.UI.Core;
+using FinnZan.Utilities;
 using WmrSharp.Common;
 
 namespace WmrSharp
@@ -26,6 +27,8 @@ namespace WmrSharp
         public AppView()
         {
             windowVisible = true;
+
+            CommonTools.InitializeDebugger("VR");
         }
 
         public void Dispose()

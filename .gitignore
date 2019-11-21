@@ -1,0 +1,45 @@
+Debug/
+Release/
+bin/
+ipch/
+libraries/
+obj/
+output/
+Debug
+Release
+*.aps
+*.cache
+*.dgml
+*.idb
+*.ipch
+*.lastbuildstate
+*.log
+*.obj
+*.opendb
+*.opensdf
+*.pch
+*.pdb
+*.psd
+*.qne
+*.res
+*.sdf
+*.suo
+*.tlog
+*.tmp
+*.user
+
+/packages
+
+/CommonTools/Resources/LogReader.exe
+
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# Installshield Limited Edition Build Results
+RadiumInstaller32/
+RadiumInstaller64/
+RadiumInstaller/Source
+RadiumInstaller/RadiumInstaller
+
+# Office Add-ins deployment directory
+OfficeAddins/RadiumOfficeAddinsSetup

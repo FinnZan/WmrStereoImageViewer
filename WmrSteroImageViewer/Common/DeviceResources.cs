@@ -7,7 +7,7 @@ using System.Threading;
 using Windows.Graphics.DirectX.Direct3D11;
 using Windows.Graphics.Holographic;
 
-namespace WmrSharp.Common
+namespace FinnZan.VR.WmrSteroImageViewer.Common
 {
     /// <summary>
     /// Controls all the DirectX device resources.

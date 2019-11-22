@@ -16,7 +16,7 @@ using Windows.Graphics.Holographic;
 using Windows.Perception.Spatial;
 using Windows.UI.Input.Spatial;
 
-using WmrSharp.Common;
+using FinnZan.VR.WmrSteroImageViewer.Common;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
@@ -24,15 +24,15 @@ using System.Collections.Generic;
 using System.Numerics;
 using FinnZan.Utilities;
 #if DRAW_SAMPLE_CONTENT
-using WmrSharp.Content;
+using FinnZan.VR.WmrSteroImageViewer.Content;
 #endif
 
-namespace WmrSharp
+namespace FinnZan.VR.WmrSteroImageViewer
 {
     /// <summary>
     /// Updates, renders, and presents holographic content using Direct3D.
     /// </summary>
-    internal class WmrSharpMain : IDisposable
+    internal class WmrMain : IDisposable
     {
 
 #if DRAW_SAMPLE_CONTENT
@@ -93,7 +93,7 @@ namespace WmrSharp
         /// Loads and initializes application assets when the application is loaded.
         /// </summary>
         /// <param name="deviceResources"></param>
-        public WmrSharpMain(DeviceResources deviceResources)
+        public WmrMain(DeviceResources deviceResources)
         {
             this.deviceResources = deviceResources;
 

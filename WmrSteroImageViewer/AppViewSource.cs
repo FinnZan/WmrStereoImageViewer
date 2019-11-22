@@ -1,6 +1,6 @@
 ﻿using Windows.ApplicationModel.Core;
 
-namespace WmrSharp
+namespace FinnZan.VR.WmrSteroImageViewer
 {
     // The entry point for the app.
     internal class AppViewSource : IFrameworkViewSource

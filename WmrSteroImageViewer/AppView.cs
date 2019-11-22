@@ -6,16 +6,16 @@ using Windows.ApplicationModel.Core;
 using Windows.Graphics.Holographic;
 using Windows.UI.Core;
 using FinnZan.Utilities;
-using WmrSharp.Common;
+using FinnZan.VR.WmrSteroImageViewer.Common;
 
-namespace WmrSharp
+namespace FinnZan.VR.WmrSteroImageViewer
 {
     /// <summary>
     /// The IFrameworkView connects the app with Windows and handles application lifecycle events.
     /// </summary>
     internal class AppView : IFrameworkView, IDisposable
     {
-        private WmrSharpMain main;
+        private WmrMain main;
 
         private DeviceResources         deviceResources;
         private bool                    windowClosed        = false;
@@ -64,7 +64,7 @@ namespace WmrSharp
             // resources.
             deviceResources = new DeviceResources();
 
-            main = new WmrSharpMain(deviceResources);
+            main = new WmrMain(deviceResources);
         }
 
         /// <summary>

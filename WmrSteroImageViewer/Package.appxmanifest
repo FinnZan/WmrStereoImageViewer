@@ -6,14 +6,14 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
-  <Identity Name="WmrSharp"
+  <Identity Name="WmrSteroImageViewer"
             Publisher="CN=finnb"
             Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ca3cf055-ba96-46a8-8415-90a90ee514f2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>WmrSharp</DisplayName>
+    <DisplayName>Stero Image Viewer</DisplayName>
     <PublisherDisplayName>finnb</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -29,12 +29,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="WmrSharp.AppView">
+        EntryPoint="FinnZan.VR.WmrSteroImageViewer.AppView">
         <uap:VisualElements
-             DisplayName="WmrSharp"
+             DisplayName="Stero Image Viewer"
              Square150x150Logo="Assets\Square150x150Logo.png" 
              Square44x44Logo="Assets\Square44x44Logo.png" 
-             Description="WmrSharp"
+             Description="WmrSteroImageViewer"
              BackgroundColor="#464646">
           <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
           <uap:SplashScreen Image="Assets\SplashScreen.png" />

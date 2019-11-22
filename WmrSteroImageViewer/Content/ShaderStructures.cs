@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace WmrSharp.Content
+namespace FinnZan.VR.WmrSteroImageViewer.Content
 {
     /// <summary>
     /// Constant buffer used to send hologram position transform to the shader pipeline.

@@ -7,8 +7,8 @@
     <ProjectGuid>{A17B5851-4AC3-4944-A473-150EE581566D}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WmrSharp</RootNamespace>
-    <AssemblyName>WmrSharp</AssemblyName>
+    <RootNamespace>FinnZan.VR.WmrSteroImageViewer</RootNamespace>
+    <AssemblyName>WmrSteroImageViewer</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
@@ -65,7 +65,7 @@
   <ItemGroup>
     <Compile Include="Content\QuadRenderer.cs" />
     <Compile Include="Content\TextureLoader.cs" />
-    <Compile Include="WmrSharpMain.cs" />
+    <Compile Include="WmrMain.cs" />
     <Compile Include="AppView.cs" />
     <Compile Include="AppViewSource.cs" />
     <Compile Include="Program.cs" />

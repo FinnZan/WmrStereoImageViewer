@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WmrSharp.Common
+namespace FinnZan.VR.WmrSteroImageViewer.Common
 {
     /// <summary>
     /// Helper class for animation and simulation timing.

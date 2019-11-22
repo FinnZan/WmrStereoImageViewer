@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WmrSharp.Content
+namespace FinnZan.VR.WmrSteroImageViewer.Content
 {
     public class TextureLoader
     {

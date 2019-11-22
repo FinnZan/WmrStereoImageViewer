@@ -10,18 +10,27 @@ namespace WmrSharp.Content
         public Matrix4x4 model;
     }
 
-    /// <summary>
-    /// Used to send per-vertex data to the vertex shader.
-    /// </summary>
-    internal struct VertexPositionColor
+    internal struct TexturedVertex
     {
-        public VertexPositionColor(Vector3 pos, Vector3 color)
-        {
-            this.pos   = pos;
-            this.color = color;
-        }
+        /// <summary>
+        /// Position
+        /// </summary>
+        public Vector3 Position;
 
-        public Vector3 pos;
-        public Vector3 color;
-    };
+        /// <summary>
+        /// Texture coordinate
+        /// </summary>
+        public Vector2 TextureCoordinate;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="position">Position</param>
+        /// <param name="textureCoordinate">Texture Coordinate</param>
+        public TexturedVertex(Vector3 position, Vector2 textureCoordinate)
+        {
+            Position = position;
+            TextureCoordinate = textureCoordinate;
+        }
+    }
 }

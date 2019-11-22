@@ -1,13 +1,19 @@
-// Per-pixel color data passed through the pixel shader.
 struct PixelShaderInput
 {
-    float4 pos   : SV_POSITION;
-    float3 color : COLOR0;
+	float4 position : SV_POSITION;
+	float2 texcoord : TEXCOORD;
 };
 
-// The pixel shader passes through the color data. The color data from 
-// is interpolated and assigned to a pixel at the rasterization step.
-float4 main(PixelShaderInput input) : SV_TARGET
+//texture
+Texture2D textureMap;
+SamplerState textureSampler
 {
-    return float4(input.color, 1.0f);
+	Filter = MIN_MAG_MIP_LINEAR;
+	AddressU = Wrap;
+	AddressV = Wrap;
+};
+
+min16float4 main(PixelShaderInput input) : SV_TARGET
+{
+	return (float4)textureMap.Sample(textureSampler, input.texcoord);
 }

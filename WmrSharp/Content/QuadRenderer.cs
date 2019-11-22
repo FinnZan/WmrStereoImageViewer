@@ -29,6 +29,9 @@ namespace WmrSharp.Content
         private int                                 indexCount = 0;
         private Vector3                             position = new Vector3(0.0f, 0.0f, 0.0f);
         private float _size = 1.0f;
+        private string _file;
+
+        private ShaderResourceView _textureView;
 
         // Variables used with the rendering loop.
         private bool                                loadingComplete = false;
@@ -40,12 +43,13 @@ namespace WmrSharp.Content
         /// <summary>
         /// Loads vertex and pixel shaders from files and instantiates the cube geometry.
         /// </summary>
-        public QuadRenderer(DeviceResources deviceResources, float size, Vector3 offset)
+        public QuadRenderer(DeviceResources deviceResources, float size, Vector3 offset, string file)
         {
             this.deviceResources  = deviceResources;
 
             position += offset;
             _size = size;
+            _file = file;
 
             this.CreateDeviceDependentResourcesAsync();
         }
@@ -120,7 +124,7 @@ namespace WmrSharp.Content
             var context = this.deviceResources.D3DDeviceContext;
             
             // Each vertex is one instance of the VertexPositionColor struct.
-            int stride = SharpDX.Utilities.SizeOf<VertexPositionColor>();
+            int stride = SharpDX.Utilities.SizeOf<TexturedVertex>();
             int offset = 0;
             var bufferBinding = new SharpDX.Direct3D11.VertexBufferBinding(this.vertexBuffer, stride, offset);
             context.InputAssembler.SetVertexBuffers(0, bufferBinding);
@@ -147,6 +151,7 @@ namespace WmrSharp.Content
 
             // Attach the pixel shader.
             context.PixelShader.SetShader(this.pixelShader, null, 0);
+            context.PixelShader.SetShaderResource(0, _textureView);
 
             // Draw the objects.
             context.DrawIndexedInstanced(
@@ -189,7 +194,7 @@ namespace WmrSharp.Content
             SharpDX.Direct3D11.InputElement[] vertexDesc =
             {
                 new SharpDX.Direct3D11.InputElement("POSITION", 0, SharpDX.DXGI.Format.R32G32B32_Float,  0, 0, SharpDX.Direct3D11.InputClassification.PerVertexData, 0),
-                new SharpDX.Direct3D11.InputElement("COLOR",    0, SharpDX.DXGI.Format.R32G32B32_Float, 12, 0, SharpDX.Direct3D11.InputClassification.PerVertexData, 0),
+                new SharpDX.Direct3D11.InputElement("TEXCOORD", 0, SharpDX.DXGI.Format.R32G32_Float, 12, 0, SharpDX.Direct3D11.InputClassification.PerVertexData, 0),
             };
 
             inputLayout = this.ToDispose(new SharpDX.Direct3D11.InputLayout(
@@ -216,23 +221,20 @@ namespace WmrSharp.Content
                 deviceResources.D3DDevice,
                 pixelShaderByteCode));
 
-            
-            var file = "IMG_20160723_184948.jpg";
-            //var file = @"‪C:\Users\finnb\Pictures\IMG_20160730_075421.jpg";
-            var texture = TextureLoader.CreateTexture2DFromBitmap(deviceResources.D3DDevice, TextureLoader.LoadBitmap(new SharpDX.WIC.ImagingFactory2(), file));
-            ShaderResourceView textureView = new ShaderResourceView(deviceResources.D3DDevice, texture);
+            var texture = TextureLoader.CreateTexture2DFromBitmap(deviceResources.D3DDevice, TextureLoader.LoadBitmap(new SharpDX.WIC.ImagingFactory2(), _file));
+            _textureView = new ShaderResourceView(deviceResources.D3DDevice, texture);
 
             // Load mesh vertices. Each vertex has a position and a color.
             // Note that the cube size has changed from the default DirectX app
             // template. Windows Holographic is scaled in meters, so to draw the
             // cube at a comfortable size we made the cube width 0.2 m (20 cm).
 
-            VertexPositionColor[] vertices =
+            TexturedVertex[] vertices =
             {
-                new VertexPositionColor(new Vector3( 0.0f,  0.0f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f)),
-                new VertexPositionColor(new Vector3(_size,  0.0f,  0.0f), new Vector3(1.0f, 1.0f, 1.0f)),
-                new VertexPositionColor(new Vector3(_size,  _size, 0.0f), new Vector3(1.0f, 1.0f, 1.0f)),
-                new VertexPositionColor(new Vector3(0.0f,  _size, 0.0f), new Vector3(1.0f, 1.0f, 1.0f)),
+                new TexturedVertex(new Vector3( 0.0f,  0.0f, 0.0f), new Vector2(0, 1)),
+                new TexturedVertex(new Vector3(_size,  0.0f,  0.0f), new Vector2(1, 1)),
+                new TexturedVertex(new Vector3(_size,  _size, 0.0f), new Vector2(1, 0)),
+                new TexturedVertex(new Vector3(0.0f,  _size, 0.0f), new Vector2(0, 0)),
             };
 
             vertexBuffer = this.ToDispose(SharpDX.Direct3D11.Buffer.Create(

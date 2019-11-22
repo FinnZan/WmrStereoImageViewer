@@ -22,6 +22,7 @@ using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using System.Collections.Generic;
 using System.Numerics;
+using FinnZan.Utilities;
 #if DRAW_SAMPLE_CONTENT
 using WmrSharp.Content;
 #endif
@@ -129,16 +130,12 @@ namespace WmrSharp
         {
             this.holographicSpace = holographicSpace;
 
-            // 
-            // TODO: Add code here to initialize your content.
-            // 
-
 #if DRAW_SAMPLE_CONTENT
             // Initialize the sample hologram.
-            var gap = 0.0f;
-            var size = 0.5f;
-            quadRendererR = new QuadRenderer(deviceResources, size, new Vector3(gap, -size/2,-2f));
-            quadRendererL = new QuadRenderer(deviceResources, size, new Vector3(-(size + gap),-size/2,-2f));
+            var gap = 0.016f;
+            var size = .15f;
+            quadRendererR = new QuadRenderer(deviceResources, size, new Vector3(gap, -size/4,-.2f), "Guitar_R_001.jpg");
+            quadRendererL = new QuadRenderer(deviceResources, size, new Vector3(-(size + gap),-size/4,-.2f), "Guitar_L_001.jpg");
 
             spatialInputHandler = new SpatialInputHandler();
 #endif
@@ -496,10 +493,15 @@ namespace WmrSharp
         /// </summary>
         public void OnDeviceRestored(Object sender, EventArgs e)
         {
-#if DRAW_SAMPLE_CONTENT
-            quadRendererR.CreateDeviceDependentResourcesAsync();
-            quadRendererL.CreateDeviceDependentResourcesAsync();
-#endif
+            try
+            {
+                quadRendererR.CreateDeviceDependentResourcesAsync();
+                quadRendererL.CreateDeviceDependentResourcesAsync();
+            }
+            catch(Exception ex)
+            {
+                CommonTools.HandleException(ex);
+            }
         }
 
         void OnLocatabilityChanged(SpatialLocator sender, Object args)

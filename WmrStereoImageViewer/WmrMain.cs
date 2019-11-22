@@ -15,19 +15,19 @@ using Windows.Graphics.DirectX.Direct3D11;
 using Windows.Graphics.Holographic;
 using Windows.Perception.Spatial;
 using Windows.UI.Input.Spatial;
-
-using FinnZan.VR.WmrSteroImageViewer.Common;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using System.Collections.Generic;
 using System.Numerics;
 using FinnZan.Utilities;
+using FinnZan.VR.WmrStereoImageViewer.Common;
+using FinnZan.VR.WmrStereoImageViewer.Content;
 #if DRAW_SAMPLE_CONTENT
-using FinnZan.VR.WmrSteroImageViewer.Content;
+
 #endif
 
-namespace FinnZan.VR.WmrSteroImageViewer
+namespace FinnZan.VR.WmrStereoImageViewer
 {
     /// <summary>
     /// Updates, renders, and presents holographic content using Direct3D.

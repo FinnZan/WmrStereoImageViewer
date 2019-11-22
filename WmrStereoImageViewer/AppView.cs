@@ -6,9 +6,9 @@ using Windows.ApplicationModel.Core;
 using Windows.Graphics.Holographic;
 using Windows.UI.Core;
 using FinnZan.Utilities;
-using FinnZan.VR.WmrSteroImageViewer.Common;
+using FinnZan.VR.WmrStereoImageViewer.Common;
 
-namespace FinnZan.VR.WmrSteroImageViewer
+namespace FinnZan.VR.WmrStereoImageViewer
 {
     /// <summary>
     /// The IFrameworkView connects the app with Windows and handles application lifecycle events.

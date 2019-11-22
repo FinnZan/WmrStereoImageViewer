@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.ApplicationModel.Core;
 
-namespace FinnZan.VR.WmrSteroImageViewer
+namespace FinnZan.VR.WmrStereoImageViewer
 {
     /// <summary>
     /// Windows Holographic application using SharpDX.

@@ -1,6 +1,6 @@
 using System;
 
-namespace FinnZan.VR.WmrSteroImageViewer.Common
+namespace FinnZan.VR.WmrStereoImageViewer.Common
 {
     // A base class that tracks resources allocated by native code. This class is
     // used to release COM references to DirectX resources.

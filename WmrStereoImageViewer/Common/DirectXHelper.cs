@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using System.Numerics;
 
-namespace FinnZan.VR.WmrSteroImageViewer.Common
+namespace FinnZan.VR.WmrStereoImageViewer.Common
 {
     internal static class DirectXHelper
     {

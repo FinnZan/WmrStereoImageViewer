@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using Windows.Graphics.DirectX.Direct3D11;
 
-namespace FinnZan.VR.WmrSteroImageViewer.Common
+namespace FinnZan.VR.WmrStereoImageViewer.Common
 {
     public static class InteropStatics
     {

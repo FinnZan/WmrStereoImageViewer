@@ -2,10 +2,10 @@
 using System.Numerics;
 using Windows.UI.Input.Spatial;
 using FinnZan.Utilities;
-using FinnZan.VR.WmrSteroImageViewer.Common;
+using FinnZan.VR.WmrStereoImageViewer.Common;
 using SharpDX.Direct3D11;
 
-namespace FinnZan.VR.WmrSteroImageViewer.Content
+namespace FinnZan.VR.WmrStereoImageViewer.Content
 {
     /// <summary>
     /// This sample renderer instantiates a basic rendering pipeline.

@@ -1,6 +1,6 @@
 ﻿using Windows.UI.Input.Spatial;
 
-namespace FinnZan.VR.WmrSteroImageViewer.Common
+namespace FinnZan.VR.WmrStereoImageViewer.Common
 {
     // Sample gesture handler.
     // Hooks up events to recognize a tap gesture, and keeps track of input using a boolean value.

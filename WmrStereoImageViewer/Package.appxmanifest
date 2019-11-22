@@ -6,7 +6,7 @@
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   IgnorableNamespaces="uap mp">
 
-  <Identity Name="WmrSteroImageViewer"
+  <Identity Name="WmrStereoImageViewer"
             Publisher="CN=finnb"
             Version="1.0.0.0" />
 
@@ -29,12 +29,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="FinnZan.VR.WmrSteroImageViewer.AppView">
+        EntryPoint="FinnZan.VR.WmrStereoImageViewer.AppView">
         <uap:VisualElements
              DisplayName="Stero Image Viewer"
              Square150x150Logo="Assets\Square150x150Logo.png" 
              Square44x44Logo="Assets\Square44x44Logo.png" 
-             Description="WmrSteroImageViewer"
+             Description="WmrStereoImageViewer"
              BackgroundColor="#464646">
           <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
           <uap:SplashScreen Image="Assets\SplashScreen.png" />
